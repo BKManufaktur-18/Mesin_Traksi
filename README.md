@@ -29,33 +29,17 @@ Versi ini dirancang untuk tujuan demonstrasi dan pengembangan awal. Meskipun mot
 
 Ini adalah versi aplikasi penuh yang dirancang untuk penggunaan praktis. Semua pembacaan sensor (beban dari load cell HX711 dan arus dari ACS712) dilakukan dari sensor fisik yang terhubung. Versi ini memberikan data yang akurat dan *real-time* dari sistem traksi, ideal untuk implementasi akhir dan pengukuran yang presisi.
 
-## Komponen Hardware
 
-## Persyaratan Software
-
-## Instalasi dan Setup
-
-## Penggunaan
-
-## Struktur Proyek
-
-## Gambar Skematik
+Skematik proyek ini dibuat menggunakan **EasyEDA**. Anda dapat menempatkan gambar skematik di sini.
 
 <!-- Tempat untuk gambar skematik. Ganti placeholder ini dengan path gambar Anda. -->
 
-![Gambar Skematik](path/to/your/schematic_image.png)
-
+![Gambar Skematik](images/schematic_image.png)
 ## Gambar PCB
 
 <!-- Tempat untuk gambar PCB. Ganti placeholder ini dengan path gambar Anda. -->
 
-![Gambar PCB](path/to/your/pcb_image.png)
-
-## Kontribusi
-
-## Lisensi
-
-
+![Gambar PCB](images/pcb_image.png)
 
 
 ### Fitur Utama
@@ -232,4 +216,76 @@ Kontribusi sangat dihargai! Jika Anda memiliki saran, perbaikan, atau fitur baru
 ## Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
+
+
+
+## Komponen Hardware
+
+Proyek ini membutuhkan komponen hardware berikut untuk fungsionalitas penuh:
+
+-   **ESP32 Development Board**: Berfungsi sebagai otak sistem, mengelola koneksi Wi-Fi, mengendalikan motor, dan memproses data sensor. ESP32 dipilih karena kapabilitas Wi-Fi terintegrasi dan performa yang memadai untuk aplikasi ini.
+-   **Stepper Motor (HBS57)**: Dua unit motor stepper HBS57 digunakan untuk menggerakkan mekanisme traksi. Satu motor didedikasikan untuk pergerakan 'Kepala' dan motor lainnya untuk pergerakan 'Pinggang'. Motor stepper ini dipilih karena presisi dalam kontrol posisi, yang krusial untuk aplikasi traksi medis.
+-   **Driver Motor Stepper**: Driver yang kompatibel dengan motor HBS57 (misalnya, driver HBS57 yang sesuai) diperlukan untuk mengendalikan motor stepper. Driver ini menerjemahkan sinyal langkah dan arah dari ESP32 menjadi gerakan motor yang presisi.
+-   **Limit Switch**: Dua unit limit switch digunakan sebagai sensor posisi home untuk masing-masing motor (LS_K untuk motor Kepala dan LS_P untuk motor Pinggang). Limit switch ini memastikan motor dapat kembali ke posisi awal yang diketahui dan aman, mencegah kerusakan akibat pergerakan berlebihan.
+-   **Load Cell (dengan HX711 Amplifier)**: Dua unit load cell digunakan untuk mengukur gaya atau beban yang diterapkan selama proses traksi. Setiap load cell terhubung ke modul amplifier HX711, yang mengubah perubahan resistansi kecil pada load cell menjadi sinyal digital yang dapat dibaca oleh ESP32. Sensor ini vital untuk memantau kekuatan traksi secara akurat.
+-   **ACS712 Current Sensor**: Dua unit sensor arus ACS712 digunakan untuk memantau konsumsi arus motor. Sensor ini membantu dalam mendeteksi anomali atau beban berlebih pada motor, yang dapat mengindikasikan masalah mekanis atau operasional. Sensor ACS712 memberikan pembacaan arus yang akurat dan terisolasi.
+-   **Tombol Remote Control**: Dua tombol push button digunakan sebagai opsi kontrol jarak jauh (REMOTE_LEFT dan REMOTE_RIGHT). Tombol-tombol ini memungkinkan operator untuk menggerakkan motor secara manual tanpa harus berinteraksi langsung dengan antarmuka web, memberikan fleksibilitas dalam penggunaan.
+-   **LED**: Satu LED indikator digunakan untuk memberikan umpan balik visual sederhana mengenai status perangkat atau operasi tertentu.
+-   **Kabel Jumper dan Breadboard (opsional)**: Digunakan untuk memfasilitasi koneksi antar komponen selama fase prototipe dan pengembangan.
+-   **Power Supply**: Catu daya yang sesuai dan stabil sangat penting untuk menyediakan daya yang cukup bagi ESP32, motor stepper, dan semua sensor. Pemilihan catu daya harus mempertimbangkan kebutuhan daya puncak motor untuk menghindari masalah performa.
+
+### Konfigurasi Pin Hardware
+
+Berikut adalah tabel yang merinci konfigurasi pin antara ESP32 dan berbagai komponen hardware yang digunakan dalam proyek ini. Konfigurasi ini konsisten di kedua versi program (`traksi_web_server_mm_ilustrasi_sensor.ino` dan `traksi_web_server_mm.ino`).
+
+| Komponen                     | Pin ESP32 |
+|:-----------------------------|:----------|
+| `LED_PIN`                    | 2         |
+| **Stepper Motor Kepala**     |           |
+| `dirPin_Kepala` (Direction)  | 33        |
+| `stepPin_Kepala` (Step)      | 32        |
+| `enablePin_Kepala` (Enable)  | 25        |
+| **Stepper Motor Pinggang**   |           |
+| `dirSpPin` (Direction)       | 27        |
+| `stepSpPin` (Step)           | 26        |
+| `enableSpPin` (Enable)       | 14        |
+| **Limit Switch**             |           |
+| `LS_K` (Kepala)              | 13        |
+| `LS_P` (Pinggang)            | 15        |
+| **Remote Control**           |           |
+| `REMOTE_LEFT`                | 4         |
+| `REMOTE_RIGHT`               | 21        |
+| **HX711 Load Cell 1**        |           |
+| `HX711_DT_1` (Data)          | 18        |
+| `HX711_SCK_1` (Clock)        | 19        |
+| **HX711 Load Cell 2**        |           |
+| `HX711_DT_2` (Data)          | 22        |
+| `HX711_SCK_2` (Clock)        | 23        |
+| **ACS712 Current Sensor 1**  | 35        |
+| **ACS712 Current Sensor 2**  | 34        |
+
+Pastikan semua koneksi dilakukan dengan benar sesuai dengan tabel ini untuk memastikan fungsionalitas sistem yang optimal.
+
+
+
+
+## Persyaratan Software
+
+Untuk dapat mengkompilasi, mengunggah, dan menjalankan program pada ESP32, Anda memerlukan lingkungan pengembangan perangkat lunak tertentu dan beberapa library tambahan. Berikut adalah daftar persyaratan software yang harus dipenuhi:
+
+-   **Arduino IDE**: Lingkungan Pengembangan Terintegrasi (IDE) Arduino adalah platform utama yang digunakan untuk menulis, mengkompilasi, dan mengunggah kode ke board ESP32. Pastikan Anda mengunduh versi terbaru dari [situs resmi Arduino](https://www.arduino.cc/en/software) untuk kompatibilitas terbaik.
+
+-   **ESP32 Board Package**: Agar Arduino IDE dapat mengenali dan berkomunikasi dengan board ESP32, Anda perlu menginstal paket board ESP32. Ini dilakukan melalui Board Manager di Arduino IDE, yang menambahkan definisi board, toolchain kompilasi, dan library inti untuk ESP32. Proses instalasi melibatkan penambahan URL JSON ke preferensi Arduino IDE dan kemudian menginstal paket dari Board Manager.
+
+-   **Library Tambahan**: Proyek ini bergantung pada beberapa library pihak ketiga yang menyediakan fungsionalitas spesifik untuk mengendalikan hardware dan mengelola komunikasi. Library-library ini harus diinstal melalui Library Manager di Arduino IDE:
+    -   `WiFi`: Library standar untuk mengelola konektivitas Wi-Fi pada ESP32, termasuk mode Access Point yang digunakan dalam proyek ini. Library ini biasanya sudah termasuk dalam instalasi ESP32 Board Package.
+    -   `WebServer`: Library ini memungkinkan ESP32 untuk bertindak sebagai server web, melayani halaman HTML dan menangani permintaan HTTP dari klien. Ini adalah komponen kunci untuk antarmuka pengguna berbasis web. Library ini juga umumnya sudah termasuk dalam ESP32 Board Package.
+    -   `AccelStepper` by Mike McCauley: Library ini menyediakan kontrol yang canggih dan presisi untuk motor stepper, termasuk akselerasi dan deselerasi yang mulus, serta kontrol posisi absolut. Ini sangat penting untuk pergerakan motor traksi yang akurat.
+    -   `ACS712` by Rob Tillaart: Library ini memfasilitasi pembacaan data dari sensor arus ACS712. Ini menyederhanakan proses konversi tegangan analog dari sensor menjadi nilai arus yang dapat digunakan.
+    -   `HX711` by Bogde: Library ini dirancang khusus untuk berinteraksi dengan modul amplifier HX711 yang digunakan bersama load cell. Ini menangani komunikasi data serial dari HX711 dan mengkonversi pembacaan mentah menjadi nilai berat yang terkalibrasi.
+    -   `ArduinoJson` by Benoit Blanchon: Library ini digunakan untuk memparsing dan menghasilkan data dalam format JSON. Dalam proyek ini, JSON digunakan untuk komunikasi data antara ESP32 dan antarmuka web, memungkinkan pertukaran data sensor dan perintah kontrol yang efisien. Pastikan untuk menginstal versi 6 atau yang lebih baru untuk kompatibilitas dan fitur terbaru.
+
+Memastikan semua persyaratan software ini terpenuhi akan memungkinkan Anda untuk mengkompilasi kode tanpa kesalahan dan mengunggahnya ke ESP32 dengan sukses.
+
+
 
