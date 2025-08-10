@@ -1,257 +1,235 @@
-# Alat Terapi Traksi 🏥
+# Proyek Alat Traksi Medis
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-Development-yellow.svg)]()
-[![University](https://img.shields.io/badge/Institution-ITS-red.svg)]()
+Selamat datang di repositori proyek Alat Traksi Medis. Proyek ini mengembangkan sistem traksi yang dikendalikan melalui antarmuka web, dirancang untuk aplikasi medis. Sistem ini menggunakan ESP32 sebagai mikrokontroler utama untuk mengendalikan motor stepper dan membaca data dari berbagai sensor, serta menyediakan antarmuka pengguna berbasis web yang intuitif.
 
-## 📖 Deskripsi
+## Daftar Isi
+- [Fitur Utama](#fitur-utama)
+- [Perbedaan Versi Program](#perbedaan-versi-program)
+- [Komponen Hardware](#komponen-hardware)
+- [Persyaratan Software](#persyaratan-software)
+- [Instalasi dan Setup](#instalasi-dan-setup)
+- [Penggunaan](#penggunaan)
+- [Struktur Proyek](#struktur-proyek)
+- [Gambar Skematik](#gambar-skematik)
+- [Gambar PCB](#gambar-pcb)
+- [Kontribusi](#kontribusi)
+- [Lisensi](#lisensi)
 
-Alat Terapi Traksi adalah perangkat medis yang dikembangkan sebagai bagian dari penelitian **Prof. I Made Londen** dari Departemen Teknik Mesin, Institut Teknologi Sepuluh Nopember (ITS). Proyek ini bertujuan untuk mengembangkan sistem traksi otomatis yang dapat membantu dalam terapi rehabilitasi medis dengan kontrol yang presisi dan aman.
+## Fitur Utama
 
-Traksi terapi adalah metode pengobatan yang menggunakan tarikan atau gaya untuk memperbaiki posisi tulang, mengurangi tekanan pada saraf, dan mempercepat proses penyembuhan pada cedera muskuloskeletal.
+## Perbedaan Versi Program
 
-## 🎯 Tujuan Proyek
+Proyek ini menyediakan dua versi program utama, masing-masing dengan fokus yang berbeda:
 
-- Mengembangkan alat terapi traksi yang aman dan efektif
-- Memberikan kontrol presisi dalam pemberian gaya traksi
-- Meningkatkan kenyamanan pasien selama terapi
-- Menyediakan monitoring real-time pada parameter terapi
-- Mengintegrasikan sistem otomatis dengan safety features
+### 1. `traksi_web_server_mm_ilustrasi_sensor.ino` (Versi Simulasi dengan Ilustrasi Sensor)
 
-## ⚡ Fitur Utama
+Versi ini dirancang untuk tujuan demonstrasi dan pengembangan awal. Meskipun motor fisik dikendalikan secara *real-time*, pembacaan sensor (beban dan arus) disimulasikan secara realistis. Ini memungkinkan pengujian antarmuka web dan logika kontrol tanpa memerlukan semua sensor fisik terhubung. Grafik sensor akan menampilkan data yang diilustrasikan, memberikan gambaran bagaimana sistem akan berperilaku dengan sensor sungguhan.
 
-- **Kontrol Otomatis**: Sistem kontrol berbasis mikrokontroler untuk pengaturan gaya traksi
-- **Monitoring Real-time**: Display parameter terapi seperti gaya, waktu, dan status sistem
-- **Safety System**: Sistem keamanan berlapis untuk melindungi pasien
-- **Interface User-Friendly**: Panel kontrol yang mudah digunakan oleh tenaga medis
-- **Data Logging**: Pencatatan data sesi terapi untuk analisis
-- **Adjustable Parameters**: Pengaturan parameter terapi sesuai kebutuhan pasien
+### 2. `traksi_web_server_mm.ino` (Versi Aplikasi Real dengan Sensor Sungguhan)
 
-## 🔧 Komponen Sistem
+Ini adalah versi aplikasi penuh yang dirancang untuk penggunaan praktis. Semua pembacaan sensor (beban dari load cell HX711 dan arus dari ACS712) dilakukan dari sensor fisik yang terhubung. Versi ini memberikan data yang akurat dan *real-time* dari sistem traksi, ideal untuk implementasi akhir dan pengukuran yang presisi.
 
-### Hardware
-- Mikrokontroler (Arduino/ESP32)
-- Motor servo/stepper untuk kontrol gaya
-- Load cell untuk sensor gaya
-- Display LCD/OLED
-- Push button dan rotary encoder
-- Safety switch dan emergency stop
-- Power supply dan driver motor
+## Komponen Hardware
 
-### Software
-- Firmware mikrokontroler (C/C++)
-- Interface monitoring (Python/GUI)
-- Sistem logging data
-- Algoritma kontrol PID
+## Persyaratan Software
 
-## 📱 Dokumentasi Visual
+## Instalasi dan Setup
 
-### Skematik Rangkaian
-![Skematik Elektronik](images/schematic.png)
-*Diagram skematik sistem elektronik alat terapi traksi*
+## Penggunaan
 
-### PCB Design
-![PCB Layout](images/pcb_layout.png)
-*Layout PCB untuk sistem kontrol*
+## Struktur Proyek
 
-![PCB 3D View](images/pcb_3d.png)
-*Visualisasi 3D PCB*
+## Gambar Skematik
 
-### Mechanical Design
-![Mechanical Assembly](images/mechanical_design.png)
-*Desain mekanik alat terapi traksi*
+<!-- Tempat untuk gambar skematik. Ganti placeholder ini dengan path gambar Anda. -->
 
-### Prototype
-![Prototype Image](images/prototype.png)
-*Foto prototype alat terapi traksi*
+![Gambar Skematik](path/to/your/schematic_image.png)
 
-## 🚀 Instalasi dan Setup
+## Gambar PCB
 
-### Persyaratan
-- Arduino IDE atau PlatformIO
-- Library yang diperlukan (lihat `requirements.txt`)
-- Komponen hardware sesuai BOM (Bill of Materials)
+<!-- Tempat untuk gambar PCB. Ganti placeholder ini dengan path gambar Anda. -->
 
-### Langkah Instalasi
+![Gambar PCB](path/to/your/pcb_image.png)
 
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/BKManufaktur-18/Mesin_Traksi.git
-   cd Mesin_Traksi
-   ```
+## Kontribusi
 
-2. **Install Dependencies**
-   ```bash
-   # Untuk Arduino IDE
-   # Install library melalui Library Manager:
-   # - AccelStepper
-   # - LiquidCrystal_I2C
-   # - HX711 (untuk load cell)
-   ```
+## Lisensi
 
-3. **Upload Firmware**
-   ```bash
-   # Buka file main.ino di Arduino IDE
-   # Pilih board dan port yang sesuai
-   # Upload ke mikrokontroler
-   ```
 
-4. **Assembly Hardware**
-   - Ikuti skematik rangkaian
-   - Pasang komponen sesuai layout PCB
-   - Lakukan kalibrasi sensor
 
-## 📋 Cara Penggunaan
 
-### Persiapan
-1. Pastikan semua koneksi hardware sudah benar
-2. Lakukan kalibrasi sistem sebelum penggunaan
-3. Periksa safety system berfungsi dengan baik
+### Fitur Utama
 
-### Operasi
-1. **Power On**: Nyalakan sistem dan tunggu inisialisasi
-2. **Setup Parameter**: Atur parameter terapi (gaya, waktu, mode)
-3. **Safety Check**: Verifikasi semua safety system aktif
-4. **Start Therapy**: Mulai sesi terapi dengan monitoring kontinyu
-5. **Monitor**: Pantau parameter selama terapi berlangsung
-6. **Stop/Emergency**: Gunakan emergency stop jika diperlukan
+Proyek Alat Traksi Medis ini menawarkan fungsionalitas komprehensif untuk mengendalikan dan memantau perangkat traksi:
 
-### Parameter Terapi
-- **Gaya Traksi**: 0-50 N (dapat disesuaikan)
-- **Durasi**: 1-60 menit
-- **Mode**: Kontinu, Intermiten, atau Custom
-- **Safety Limit**: Batas maksimum gaya dan waktu
+- **Kontrol Motor Stepper**: Menggunakan dua motor stepper (Motor Kepala dan Motor Pinggang) untuk menggerakkan mekanisme traksi dengan presisi. Kontrol posisi dalam satuan milimeter (mm).
+- **Antarmuka Web Responsif**: Menyediakan dashboard berbasis web yang dapat diakses melalui browser di perangkat apa pun (komputer, tablet, smartphone) yang terhubung ke jaringan Wi-Fi ESP32. Antarmuka ini menampilkan data sensor secara *real-time* dan memungkinkan kontrol motor.
+- **Pemantauan Sensor *Real-time***: Menampilkan data dari sensor beban (load cell) dan sensor arus (ACS712) secara grafis pada antarmuka web, memungkinkan pemantauan kondisi traksi secara langsung.
+- **Kalibrasi Otomatis (Homing)**: Fitur homing otomatis untuk kedua motor, memastikan posisi awal yang akurat dan konsisten.
+- **Kontrol Jarak Jauh**: Mendukung kontrol motor melalui tombol fisik eksternal (remote control) selain kontrol melalui antarmuka web.
+- **Konversi Posisi ke mm**: Posisi motor dikonversi dan ditampilkan dalam satuan milimeter untuk pembacaan yang lebih intuitif dan relevan secara medis.
+- **Manajemen Jaringan Wi-Fi**: ESP32 berfungsi sebagai Access Point (AP), menciptakan jaringan Wi-Fi sendiri untuk konektivitas lokal.
 
-## 📊 Spesifikasi Teknis
 
-| Parameter | Spesifikasi |
-|-----------|-------------|
-| Input Voltage | 12V DC |
-| Konsumsi Daya | < 50W |
-| Akurasi Gaya | ±0.5 N |
-| Range Gaya | 0-50 N |
-| Interface | LCD 20x4, Push Button |
-| Komunikasi | Serial, Bluetooth (opsional) |
-| Dimensi | 400x300x200 mm |
-| Berat | ~5 kg |
 
-## 🔬 Penelitian dan Testing
 
-### Metodologi Testing
-- Pengujian akurasi sensor gaya
-- Testing safety system
-- Evaluasi performa motor control
-- Analisis stabilitas sistem
-- User acceptance testing dengan tenaga medis
+## Komponen Hardware
 
-### Hasil Penelitian
-Dokumentasi hasil penelitian tersedia di folder `/research/` meliputi:
-- Data pengujian laboratory
-- Analisis performa sistem
-- Feedback dari praktisi medis
-- Rekomendasi pengembangan
+Proyek ini membutuhkan komponen hardware berikut:
 
-## 📁 Struktur Project
+- **ESP32 Development Board**: Sebagai mikrokontroler utama yang menjalankan server web dan mengendalikan semua periferal.
+- **Stepper Motor (HBS57)**: Dua unit motor stepper, satu untuk 'Kepala' dan satu untuk 'Pinggang'.
+- **Driver Motor Stepper**: Driver yang kompatibel dengan motor HBS57 (misalnya, HBS57 atau sejenisnya).
+- **Limit Switch**: Dua unit limit switch, satu untuk masing-masing motor (LS_K dan LS_P).
+- **Load Cell (dengan HX711 Amplifier)**: Dua unit load cell untuk mengukur beban, masing-masing terhubung ke modul HX711.
+- **ACS712 Current Sensor**: Dua unit sensor arus ACS712 untuk memantau konsumsi arus motor.
+- **Tombol Remote Control**: Dua tombol push button untuk kontrol jarak jauh (REMOTE_LEFT dan REMOTE_RIGHT).
+- **LED**: Satu LED indikator.
+- **Kabel Jumper dan Breadboard (opsional)**: Untuk koneksi antar komponen.
+- **Power Supply**: Catu daya yang sesuai untuk ESP32, motor stepper, dan sensor.
 
-```
-Mesin_Traksi/
-├── src/
-│   ├── main.ino              # Main firmware
-│   ├── control.cpp           # Motor control functions
-│   ├── sensor.cpp            # Sensor reading functions
-│   └── display.cpp           # Display functions
-├── hardware/
-│   ├── schematic/            # File skematik (Eagle/KiCad)
-│   ├── pcb/                  # Design PCB
-│   ├── bom.xlsx              # Bill of Materials
-│   └── assembly_guide.pdf    # Panduan assembly
-├── mechanical/
-│   ├── cad_files/            # File CAD (SolidWorks/Fusion360)
-│   └── drawings/             # Technical drawings
-├── docs/
-│   ├── user_manual.pdf       # Manual pengguna
-│   ├── technical_spec.pdf    # Spesifikasi teknis
-│   └── safety_guide.pdf      # Panduan keamanan
-├── images/
-│   ├── schematic.png
-│   ├── pcb_layout.png
-│   ├── pcb_3d.png
-│   ├── mechanical_design.png
-│   └── prototype.png
-├── research/
-│   ├── test_data/            # Data hasil pengujian
-│   ├── analysis/             # Analisis hasil
-│   └── publications/         # Paper dan publikasi
-└── README.md
-```
+### Konfigurasi Pin (Berdasarkan `traksi_web_server_mm_ilustrasi_sensor.ino` dan `traksi_web_server_mm.ino`)
 
-## ⚠️ Keamanan dan Peringatan
+| Komponen               | Pin ESP32 (traksi_web_server_mm_ilustrasi_sensor.ino) | Pin ESP32 (traksi_web_server_mm.ino) |
+|------------------------|-------------------------------------------------------|--------------------------------------|
+| LED_PIN                | 2                                                     | 2                                    |
+| **Stepper Motor Kepala** |                                                       |                                      |
+| Dir Pin                | 33                                                    | 33                                   |
+| Step Pin               | 32                                                    | 32                                   |
+| Enable Pin             | 25                                                    | 25                                   |
+| **Stepper Motor Pinggang**|                                                       |                                      |
+| Dir Pin                | 27                                                    | 27                                   |
+| Step Pin               | 26                                                    | 26                                   |
+| Enable Pin             | 14                                                    | 14                                   |
+| **Limit Switch**       |                                                       |                                      |
+| LS_K (Kepala)          | 13                                                    | 13                                   |
+| LS_P (Pinggang)        | 15                                                    | 15                                   |
+| **Remote Control**     |                                                       |                                      |
+| REMOTE_LEFT            | 4                                                     | 4                                    |
+| REMOTE_RIGHT           | 21                                                    | 21                                   |
+| **HX711 Load Cell 1**  |                                                       |                                      |
+| DT                     | 18                                                    | 18                                   |
+| SCK                    | 19                                                    | 19                                   |
+| **HX711 Load Cell 2**  |                                                       |                                      |
+| DT                     | 22                                                    | 22                                   |
+| SCK                    | 23                                                    | 23                                   |
+| **ACS712 Current Sensor 1**| 35                                                    | 35                                   |
+| **ACS712 Current Sensor 2**| 34                                                    | 34                                   |
 
-**PENTING**: Alat ini adalah perangkat medis yang harus digunakan dengan pengawasan tenaga medis profesional.
 
-### Safety Features
-- Emergency stop button
-- Force limiting system
-- Auto-shutdown pada error
-- Visual dan audio alarm
-- Backup power system
 
-### Peringatan Penggunaan
-- Jangan gunakan tanpa supervisi medis
-- Periksa kalibrasi secara berkala
-- Lakukan maintenance sesuai jadwal
-- Jangan modifikasi tanpa persetujuan peneliti
-- Laporkan segera jika ada malfungsi
 
-## 🤝 Kontribusi
+## Persyaratan Software
 
-Proyek ini terbuka untuk kontribusi dari komunitas, terutama:
-- Improvement pada algoritma kontrol
-- Enhancement user interface
-- Testing dan quality assurance
-- Dokumentasi dan tutorial
-- Optimization performa
+Untuk mengkompilasi dan mengunggah program ke ESP32, Anda memerlukan:
 
-### Guidelines Kontribusi
-1. Fork repository
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buat Pull Request
+- **Arduino IDE**: Lingkungan pengembangan terintegrasi untuk Arduino dan ESP32.
+- **ESP32 Board Package**: Instal paket board ESP32 untuk Arduino IDE melalui Board Manager.
+- **Library Tambahan**: Instal library berikut melalui Library Manager di Arduino IDE:
+    - `WiFi` (biasanya sudah termasuk dalam ESP32 Board Package)
+    - `WebServer` (biasanya sudah termasuk dalam ESP32 Board Package)
+    - `AccelStepper` by Mike McCauley
+    - `ACS712` by Rob Tillaart
+    - `HX711` by Bogde
+    - `ArduinoJson` by Benoit Blanchon (versi 6 atau lebih baru)
 
-## 📞 Tim Peneliti
 
-- **Principal Investigator**: Prof. I Made Londen - Teknik Mesin ITS
-- **Developer**: BKManufaktur-18 Team
-- **Institution**: Institut Teknologi Sepuluh Nopember (ITS)
 
-### Kontak
-- Email: [email@its.ac.id](mailto:email@its.ac.id)
-- Institution: [Teknik Mesin ITS](https://me.its.ac.id/)
-- Research Group: Medical Device Development
 
-## 📄 Lisensi
+## Instalasi dan Setup
 
-Project ini dilisensikan under MIT License - lihat file [LICENSE](LICENSE) untuk detail.
+1.  **Instal Arduino IDE**: Unduh dan instal Arduino IDE dari [situs resmi Arduino](https://www.arduino.cc/en/software).
+2.  **Instal ESP32 Board Package**: 
+    - Buka Arduino IDE.
+    - Pergi ke `File > Preferences`.
+    - Di kolom `Additional Board Manager URLs`, tambahkan URL berikut: `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
+    - Klik `OK`.
+    - Pergi ke `Tools > Board > Board Manager...`.
+    - Cari "esp32" dan instal `esp32 by Espressif Systems`.
+3.  **Instal Library yang Dibutuhkan**: 
+    - Buka Arduino IDE.
+    - Pergi ke `Sketch > Include Library > Manage Libraries...`.
+    - Cari dan instal library berikut:
+        - `AccelStepper`
+        - `ACS712`
+        - `HX711`
+        - `ArduinoJson` (pastikan versi 6 atau lebih baru)
+4.  **Buka Proyek**: 
+    - Unduh repositori ini ke komputer Anda.
+    - Buka salah satu file `.ino` (misalnya, `traksi_web_server_mm.ino`) di Arduino IDE.
+5.  **Konfigurasi Wi-Fi**: 
+    - Anda dapat mengubah SSID dan password Access Point di awal file `.ino` jika diperlukan:
+    ```cpp
+    const char* ssid = "TraksiMonitor";
+    const char* password = "12345678";
+    ```
+6.  **Konfigurasi Kalibrasi Motor**: 
+    - Sesuaikan konstanta kalibrasi motor (`STEPS_PER_MM_KEPALA`, `STEPS_PER_MM_PINGGANG`, `MAX_TRAVEL_MM_KEPALA`, `MAX_TRAVEL_MM_PINGGANG`) sesuai dengan spesifikasi mekanik sistem traksi Anda.
+    ```cpp
+    const float STEPS_PER_MM_KEPALA = 84.8;     // Steps per mm untuk motor kepala
+    const float STEPS_PER_MM_PINGGANG = 84.8;   // Steps per mm untuk motor pinggang
+    const float MAX_TRAVEL_MM_KEPALA = 200.0;   // Max travel dalam mm untuk kepala
+    const float MAX_TRAVEL_MM_PINGGANG = 150.0; // Max travel dalam mm untuk pinggang
+    ```
+7.  **Hubungkan ESP32**: Sambungkan ESP32 Anda ke komputer menggunakan kabel USB.
+8.  **Pilih Board dan Port**: Di Arduino IDE, pergi ke `Tools > Board` dan pilih `ESP32 Dev Module` (atau board ESP32 yang sesuai). Kemudian, pergi ke `Tools > Port` dan pilih port serial yang terhubung dengan ESP32 Anda.
+9.  **Unggah Program**: Klik tombol `Upload` (panah kanan) di Arduino IDE untuk mengkompilasi dan mengunggah program ke ESP32.
 
-## 🙏 Acknowledgments
 
-- Institut Teknologi Sepuluh Nopember (ITS)
-- Departemen Teknik Mesin ITS
-- Tim peneliti Medical Device Development
-- Praktisi medis yang memberikan feedback
-- Open source community
 
-## 📚 Referensi
 
-1. Medical Traction Therapy Guidelines
-2. International Medical Device Standards (ISO 13485)
-3. Arduino Programming Reference
-4. Control Systems Engineering Literature
-5. Safety Standards for Medical Devices
+## Penggunaan
 
----
+Setelah program berhasil diunggah ke ESP32 dan perangkat keras terhubung dengan benar, ikuti langkah-langkah berikut untuk menggunakan sistem:
 
-**Catatan**: Proyek ini masih dalam tahap development. Penggunaan untuk aplikasi medis nyata harus melalui sertifikasi dan persetujuan yang sesuai dengan regulasi medis yang berlaku.
+1.  **Nyalakan Perangkat**: Pastikan ESP32 dan semua komponen terhubung dan mendapatkan daya yang cukup.
+2.  **Koneksi Wi-Fi**: 
+    - Dari perangkat Anda (komputer, smartphone, tablet), cari jaringan Wi-Fi dengan nama `TraksiMonitor` (atau SSID yang Anda konfigurasikan).
+    - Hubungkan ke jaringan tersebut menggunakan password `12345678` (atau password yang Anda konfigurasikan).
+3.  **Akses Antarmuka Web**: 
+    - Buka browser web Anda.
+    - Ketik `192.168.4.1` di bilah alamat dan tekan Enter. Ini akan membuka dashboard kontrol traksi.
+4.  **Homing Otomatis**: 
+    - Setelah antarmuka web terbuka, sistem akan mencoba melakukan homing otomatis untuk kedua motor. Pastikan tidak ada halangan di jalur motor dan limit switch dapat dijangkau.
+    - Proses homing akan menggerakkan motor hingga menyentuh limit switch untuk menentukan posisi `0mm`.
+    - Status homing akan ditampilkan di dashboard.
+5.  **Kontrol Motor**: 
+    - Di dashboard, Anda dapat memilih motor yang ingin dikendalikan (Kepala atau Pinggang) menggunakan tombol radio.
+    - Gunakan tombol `+10mm`, `-10mm`, `+1mm`, `-1mm`, `+0.1mm`, `-0.1mm` untuk menggerakkan motor ke posisi yang diinginkan.
+    - Tombol `STOP` akan menghentikan gerakan motor saat ini.
+    - Tombol `HOME` akan mengembalikan motor ke posisi `0mm`.
+    - Anda juga dapat menggunakan tombol remote control fisik yang terhubung ke pin `REMOTE_LEFT` dan `REMOTE_RIGHT` untuk menggerakkan motor.
+6.  **Pemantauan Data Sensor**: 
+    - Grafik `Force (Kg)` akan menampilkan pembacaan beban dari load cell secara *real-time*.
+    - Grafik `Current (A)` akan menampilkan pembacaan arus motor secara *real-time*.
+    - Nilai posisi motor (dalam mm), status limit switch, dan status motor juga akan diperbarui secara dinamis di dashboard.
 
-**Status**: Development Phase | **Last Updated**: August 2025
+### Perbedaan Penggunaan antara Dua Program:
+
+-   **`traksi_web_server_mm_ilustrasi_sensor.ino`**: Saat menggunakan program ini, grafik `Force (Kg)` dan `Current (A)` akan menampilkan data yang disimulasikan. Ini berguna untuk memahami fungsionalitas antarmuka web dan kontrol motor tanpa perlu mengintegrasikan sensor fisik.
+-   **`traksi_web_server_mm.ino`**: Saat menggunakan program ini, grafik `Force (Kg)` dan `Current (A)` akan menampilkan data aktual dari sensor load cell dan sensor arus yang terhubung ke ESP32 Anda. Pastikan sensor terkalibrasi dengan benar untuk mendapatkan pembacaan yang akurat.
+
+
+
+
+## Struktur Proyek
+
+Repositori ini berisi file-file utama berikut:
+
+-   `traksi_web_server_mm_ilustrasi_sensor.ino`: Kode program untuk ESP32 dengan simulasi data sensor.
+-   `traksi_web_server_mm.ino`: Kode program untuk ESP32 dengan pembacaan sensor *real-time*.
+-   `README.md`: File ini, berisi dokumentasi proyek.
+
+File `.ino` berisi kode C++ untuk mikrokontroler ESP32, termasuk konfigurasi Wi-Fi, kontrol motor stepper, pembacaan sensor (simulasi atau real), dan implementasi server web untuk antarmuka pengguna.
+
+
+
+
+## Kontribusi
+
+Kontribusi sangat dihargai! Jika Anda memiliki saran, perbaikan, atau fitur baru, silakan buka *issue* atau kirim *pull request*.
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
+
