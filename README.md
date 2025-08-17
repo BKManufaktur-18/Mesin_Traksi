@@ -34,12 +34,12 @@ Skematik proyek ini dibuat menggunakan **EasyEDA**. Anda dapat menempatkan gamba
 
 <!-- Tempat untuk gambar skematik. Ganti placeholder ini dengan path gambar Anda. -->
 
-![Gambar Skematik](images/schematic_image.png)
+![Gambar Skematik](images/skematik.png)
 ## Gambar PCB
 
 <!-- Tempat untuk gambar PCB. Ganti placeholder ini dengan path gambar Anda. -->
 
-![Gambar PCB](images/pcb_image.png)
+![Gambar PCB](images/pcb.png)
 
 
 ### Fitur Utama
@@ -286,6 +286,12 @@ Untuk dapat mengkompilasi, mengunggah, dan menjalankan program pada ESP32, Anda 
     -   `ArduinoJson` by Benoit Blanchon: Library ini digunakan untuk memparsing dan menghasilkan data dalam format JSON. Dalam proyek ini, JSON digunakan untuk komunikasi data antara ESP32 dan antarmuka web, memungkinkan pertukaran data sensor dan perintah kontrol yang efisien. Pastikan untuk menginstal versi 6 atau yang lebih baru untuk kompatibilitas dan fitur terbaru.
 
 Memastikan semua persyaratan software ini terpenuhi akan memungkinkan Anda untuk mengkompilasi kode tanpa kesalahan dan mengunggahnya ke ESP32 dengan sukses.
+
+![Gambar Finishing](images/mesin1.png)
+
+![Gambar Finishing](images/mesin2.png)
+
+![Gambar Finishing](images/mesin3.png)
 
 
 
